@@ -18,6 +18,13 @@ class Posts extends Component {
             return (
                 <div className="container">
                     <div className="row">
+                        <Link to="/new-post">
+                            <div className="card text-white bg-primary mb-3">
+                                <div className="card-body">
+                                <h4 className="card-title">+ New Post</h4>
+                                </div>
+                            </div>
+                        </Link>
                     {
                         posts.map(post => (
                             <div key={post.id}  className="col-sm-12 col-md-4 col-lg-3">
