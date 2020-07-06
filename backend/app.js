@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const routes = require('./routes/index')
 
 const app = express();
 app.use(helmet());
+app.use(cors());
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-  });
+app.use('/', routes);
 
 // start the server
 app.listen(8000, () => {
