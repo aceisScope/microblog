@@ -1,17 +1,17 @@
 import ActionTypes from '../Constants/ActionTypes'
 
-const initialState = {
-    posts: []
-  }
+const initialState = {}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.ADD_POST:
-            return Object.assign({}, state, {
-                posts: state.posts.concat(action.payload)
-              })
+            return {...state,
+                    posts: state.posts.concat(action.payload)
+                }
         case ActionTypes.GET_POSTS:
-            return {...state, blogs: action.payload}
+            return {...state, 
+                    posts: action.payload
+                }
         default:
             return state;
     }
