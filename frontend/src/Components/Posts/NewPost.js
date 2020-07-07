@@ -24,8 +24,7 @@ class NewPost extends Component {
         this.props.AddPost({
                 title: this.state.title,
                 content: this.state.content
-            });
-        
+            }, this.props.history)
     }
 
     render() {
@@ -79,15 +78,15 @@ const mapStateToProps = state => {
     return { posts: state.posts }
 }
 
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators(
-//     {
-//         AddPost
-//     },
-//     dispatch
-//   );
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+        AddPost
+    },
+    dispatch
+  );
 
 export default withRouter(connect(
     mapStateToProps,
-    {AddPost}
+    mapDispatchToProps
     )(NewPost));

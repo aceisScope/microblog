@@ -9,14 +9,16 @@ const addNewPostSuccess = payload => ({
     payload: payload
 });
 
-export const AddPost = (newPost) => {
+export const AddPost = (newPost, history) => {
     return dispatch => {
         dispatch(addNewPost());
 
-        console.log('new post: ', newPost, JSON.stringify(newPost));
         fetch(`/posts`, {body: JSON.stringify(newPost), headers: {'content-type': 'application/json'}, method: 'POST'})
             .then( (response) => response.json() )
-            .then( (data) => dispatch(addNewPostSuccess(data.newPost)))
+            .then( (data) => {
+                dispatch(addNewPostSuccess(data.newPost))
+                history.push('/')
+            })
             .catch( (e) => console.log(e) );
     }
 }
