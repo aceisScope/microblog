@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-var fakePostsItems = [{
+var posts = [{
     id: '1',
     title: 'Mad owl chases car 1',
     body: `Morecambe - Tuesday 8th August 2017
@@ -17,12 +17,19 @@ var fakePostsItems = [{
     Eye Witness, Eric Barnes said "When I heard it Squawk in the sky above me, I thought I was done for"`
 }];
 
-router.get('/', function(req, res, next) {
-    res.send({'posts': fakePostsItems});
+router.get('/posts', function(req, res, next) {
+    res.send({'posts': posts});
 });
 
-router.get('/posts', function(req, res, next) {
-    res.send({'posts': fakePostsItems});
-});
+router.post('/posts', function(req, res, next) {
+    const {title, content} = req.body;
+    const newPost = {
+        id: posts.length + 1,
+        title: title,
+        body: content
+      };
+    posts.push(newPost);
+    res.json({success: true, post: newPost});
+})
   
 module.exports = router;

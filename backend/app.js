@@ -8,6 +8,7 @@ const routes = require('./routes/index')
 const app = express();
 app.use(helmet());
 app.use(cors());
+app.use(bodyParser.json());
 
 app.use('/', routes);
 
