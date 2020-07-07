@@ -22,6 +22,7 @@ router.get('/posts', function(req, res, next) {
 });
 
 router.post('/posts', function(req, res, next) {
+    console.log(req.body)
     const {title, content} = req.body;
     const newPost = {
         id: posts.length + 1,

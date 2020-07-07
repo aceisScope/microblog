@@ -6,11 +6,21 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.ADD_POST:
             return {...state,
-                    posts: state.posts.concat(action.payload)
+                fetchingPosts: true
+            }
+        case ActionTypes.GET_POST:
+            return {...state,
+                fetchingPosts: true
+            }
+        case ActionTypes.ADD_POSTS_SUCCESS:
+            return {...state,
+                    posts: state.posts.concat(action.payload),
+                    fetchingPosts: false
                 }
-        case ActionTypes.GET_POSTS:
+        case ActionTypes.GET_POSTS_SUCCESS:
             return {...state, 
-                    posts: action.payload
+                    posts: action.payload,
+                    fetchingPosts: false
                 }
         default:
             return state;
