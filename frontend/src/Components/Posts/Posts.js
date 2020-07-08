@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { GetPosts } from '../../Actions/Posts';
+import auth0Client from '../../Auth/Auth'
 
 class Posts extends Component {
     componentDidMount(){
@@ -10,7 +11,6 @@ class Posts extends Component {
     }
 
     render() {
-        console.log(this.props);
         let { posts } = this.props; 
         if (posts === undefined) {
             return <p>Loading ...</p>;
@@ -18,13 +18,17 @@ class Posts extends Component {
             return (
                 <div className="container">
                     <div className="row">
+                    {
+                        auth0Client.isAuthenticated() && (
                         <Link to="/new-post">
-                            <div className="card text-white bg-primary mb-3">
-                                <div className="card-body">
-                                <h4 className="card-title">+ New Post</h4>
-                                </div>
+                        <div className="card text-white bg-primary mb-3">
+                            <div className="card-body">
+                            <h4 className="card-title">+ New Post</h4>
                             </div>
-                        </Link>
+                        </div>
+                        </Link> 
+                        )
+                    }
                     {
                         posts.map(post => (
                             <div key={post.id}  className="col-sm-12 col-md-4 col-lg-3">

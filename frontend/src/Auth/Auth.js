@@ -16,10 +16,10 @@ class Auth {
     getProfile = () => {
       return this.profile;
     };
-  
-    getIdToken = () => {
-      return this.idToken;
-    };
+
+    getAccessToken = () => {
+        return this.accessToken;
+    }
   
     handleAuthentication = () => {
       return new Promise((resolve, reject) => {
@@ -45,6 +45,7 @@ class Auth {
     setSession = (authResult, step) => {
       this.idToken = authResult.idToken;
       this.profile = authResult.idTokenPayload;
+      this.accessToken = authResult.accessToken;
       // set the time that the id token will expire at
       this.expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
     };

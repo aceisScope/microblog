@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { AddPost } from '../../Actions/NewPost';
+import auth0Client from '../../Auth/Auth';
 
 class NewPost extends Component {
     state = {

@@ -4,6 +4,7 @@ import NavBar from './Components/NavBar/NavBar'
 import Posts from './Components/Posts/Posts'
 import NewPost from './Components/Posts/NewPost'
 import Callback from './Auth/Callback';
+import SecuredRoute from './Auth/SecuredRoute';
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
       <div>
         <NavBar/>
         <Route exact path='/' component={Posts}/>
-        <Route exact path='/new-post' component={NewPost}/>
+        <SecuredRoute exact path='/new-post' component={NewPost}/>
         <Route exact path='/callback' component={Callback}/>
       </div>
     );
