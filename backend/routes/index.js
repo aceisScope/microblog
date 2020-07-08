@@ -1,5 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
+const authConfig = require("../../auth_config.json");
+
+const checkJwt = jwt({
+    secret: jwksRsa.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
+    }),
+  
+    // Validate the audience and the issuer.
+    audience: authConfig.audience,
+    issuer: `https://${authConfig.domain}/`,
+    algorithms: ['RS256']
+  });
 
 var posts = [{
     id: '1',
@@ -21,7 +38,7 @@ router.get('/posts', function(req, res, next) {
     res.send({'posts': posts});
 });
 
-router.post('/posts', function(req, res, next) {
+router.post('/posts', checkJwt, function(req, res, next) {
     console.log(req.body)
     const {title, content} = req.body;
     const newPost = {
