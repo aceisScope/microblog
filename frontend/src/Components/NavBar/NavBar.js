@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import auth0Client from '../../Auth/Auth';
 
 function NavBar() {
@@ -32,4 +32,4 @@ function NavBar() {
     );
   }
   
-  export default NavBar;
+  export default withRouter(NavBar);
