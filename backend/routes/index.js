@@ -20,18 +20,12 @@ const checkJwt = jwt({
 
 var posts = [{
     id: '1',
-    title: 'Mad owl chases car 1',
-    body: `Morecambe - Tuesday 8th August 2017
-
-    Yesterday evening motorists were left running for their lives as a mad owl began a campaign of terror on rush traffic. 
-    Eye Witness, Eric Barnes said "When I heard it Squawk in the sky above me, I thought I was done for"`
+    title: 'This is True!',
+    body: `Banging your head against a wall for one hour burns 150 calories. Alternatively, you can walk your dog for 45 minutes, which also burns 150 calories – and is much less painful.`
 }, {
     id: '2',
-    title: 'Mad owl chases car 2',
-    body: `Morecambe - Tuesday 8th August 2019
-
-    Yesterday evening motorists were left running for their lives as a mad owl began a campaign of terror on rush traffic. 
-    Eye Witness, Eric Barnes said "When I heard it Squawk in the sky above me, I thought I was done for"`
+    title: 'Why isn’t this a law everywhere?!',
+    body: `In Switzerland it is illegal to own just one guinea pig. This is because guinea pigs are social animals, and they are considered victims of abuse if they are alone.`
 }];
 
 router.get('/posts', function(req, res, next) {
