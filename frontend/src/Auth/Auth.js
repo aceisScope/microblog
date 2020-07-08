@@ -52,8 +52,8 @@ class Auth {
   
     signOut = () => {
       this.auth0.logout({
-        returnTo: process.env.REACT_APP_API,
-        clientID: process.env.REACT_APP_ID
+        returnTo: authConfig.signOutURI,
+        clientID: authConfig.clientId
       });
     };
   
