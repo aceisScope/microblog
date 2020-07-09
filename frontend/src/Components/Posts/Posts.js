@@ -34,7 +34,7 @@ class Posts extends Component {
                             <div key={post.id}  className="col-sm-12 col-md-4 col-lg-3">
                                 <div className="card border-primary mb-3">
                                     <div className="card-header">
-                                    <h4 className="card-title">{post.title}</h4>
+                                    <h4 className="card-title">{post.user}</h4>
                                     </div>
                                     <div className="card-body">
                                     <p className="card-text">{post.body}</p>

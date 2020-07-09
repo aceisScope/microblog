@@ -9,7 +9,7 @@ class NewPost extends Component {
     maxlength = 280;
     state = {
         disabled: false,
-        title: '',
+        author: auth0Client.profile.nickname,
         content: ''
     };
 
@@ -24,7 +24,7 @@ class NewPost extends Component {
             disabled: true
           });
         this.props.AddPost({
-                title: this.state.title,
+                author: this.state.author,
                 content: this.state.content
             }, this.props.history)
     }
@@ -38,18 +38,6 @@ class NewPost extends Component {
                         <div className="card-header">New Post</div>
                         <div className="card-body text-left">
                             <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Title:</label>
-                                <input
-                                    disabled={this.state.disabled}
-                                    type="text"
-                                    name="title"
-                                    onChange={this.update}
-                                    className="form-control"
-                                    placeholder="Give your post a title."
-                                    value={this.state.title}
-                                />
-                            </div>
-                            <div className="form-group">
                                 <label htmlFor="exampleInputEmail1">Content:</label>
                                 <textarea
                                     disabled={this.state.disabled}
@@ -59,7 +47,7 @@ class NewPost extends Component {
                                     className="form-control"
                                     placeholder="Give your post a Content."
                                     value={this.state.content}
-                                    maxlength={this.maxlength}
+                                    maxLength={this.maxlength}
                                 />
                                 <p style={{textAlign:"right"}}>({this.state.content.length}/{this.maxlength})</p>
                             </div>

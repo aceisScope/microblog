@@ -20,11 +20,11 @@ const checkJwt = jwt({
 
 var posts = [{
     id: '1',
-    title: 'This is True!',
+    user: 'Jim Appleseed',
     body: `Banging your head against a wall for one hour burns 150 calories. Alternatively, you can walk your dog for 45 minutes, which also burns 150 calories – and is much less painful.`
 }, {
     id: '2',
-    title: 'Why isn’t this a law everywhere?!',
+    user: 'Maria Grapefruit',
     body: `In Switzerland it is illegal to own just one guinea pig. This is because guinea pigs are social animals, and they are considered victims of abuse if they are alone.`
 }];
 
@@ -33,11 +33,10 @@ router.get('/posts', function(req, res, next) {
 });
 
 router.post('/posts', checkJwt, function(req, res, next) {
-    console.log(req.body)
-    const {title, content} = req.body;
+    const {author, content} = req.body;
     const newPost = {
         id: posts.length + 1,
-        title: title,
+        user: author,
         body: content
       };
     posts.push(newPost);
