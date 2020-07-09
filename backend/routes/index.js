@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
-const authConfig = require("../../auth_config.json");
+const authConfig = require("../auth_config.json");
 
 const checkJwt = jwt({
     secret: jwksRsa.expressJwtSecret({
