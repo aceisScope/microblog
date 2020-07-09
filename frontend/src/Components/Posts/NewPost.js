@@ -6,7 +6,7 @@ import { AddPost } from '../../Actions/NewPost';
 import auth0Client from '../../Auth/Auth';
 
 class NewPost extends Component {
-    maxlength = 140;
+    maxlength = 280;
     state = {
         disabled: false,
         title: '',
