@@ -6,6 +6,7 @@ import { AddPost } from '../../Actions/NewPost';
 import auth0Client from '../../Auth/Auth';
 
 class NewPost extends Component {
+    maxlength = 140;
     state = {
         disabled: false,
         title: '',
@@ -50,7 +51,7 @@ class NewPost extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputEmail1">Content:</label>
-                                <input
+                                <textarea
                                     disabled={this.state.disabled}
                                     type="text"
                                     name="content"
@@ -58,7 +59,9 @@ class NewPost extends Component {
                                     className="form-control"
                                     placeholder="Give your post a Content."
                                     value={this.state.content}
+                                    maxlength={this.maxlength}
                                 />
+                                <p style={{textAlign:"right"}}>({this.state.content.length}/{this.maxlength})</p>
                             </div>
                             <button
                                 disabled={this.state.disabled}
